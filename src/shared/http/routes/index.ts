@@ -1,4 +1,4 @@
-import usersRouter from '@modules/users/routes/users.routes';
+import usersRouter from '../../../modules/users/routes/users.routes';
 import { Router } from 'express';
 
 const routes = Router();

@@ -5,6 +5,7 @@ import cors from 'cors';
 import { errors } from 'celebrate';
 import routes from './routes';
 import AppError from './errors/AppError';
+import { AppDataSource } from '../../data-source';
 
 const app = express();
 
@@ -29,6 +30,8 @@ app.use(
     });
   },
 );
+
+AppDataSource.initialize();
 
 app.listen(3333, () => {
   console.log('Servidor iniciado na porta 3333!');

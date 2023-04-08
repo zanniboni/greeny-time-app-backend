@@ -1,7 +1,8 @@
 import AppError from '@shared/http/errors/AppError';
-import User from '../typeorm/entities/User';
-import { UserRepository } from '../typeorm/repositories/User.Repository';
+import User from '../entities/User';
 import { getCustomRepository } from 'typeorm';
+import { UserRepository } from '../repositories/User.Repository';
+import { AppDataSource } from 'src/data-source';
 
 interface IRequest {
   id: string;
@@ -12,7 +13,7 @@ interface IRequest {
 
 class UpdateUserService {
   public async execute({ id, name, email, password }: IRequest): Promise<User> {
-    const usersRepository = getCustomRepository(UserRepository);
+    const usersRepository = AppDataSource.getRepository(UserRepository);
 
     const user = await usersRepository.findOne(id);
 
