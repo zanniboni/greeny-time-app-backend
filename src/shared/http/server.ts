@@ -27,11 +27,14 @@ app.use(
     return response.status(500).json({
       status: 'error',
       message: 'Internal server error',
+      innerException: error.message,
     });
   },
 );
 
-AppDataSource.initialize();
+AppDataSource.initialize().then(() => {
+  console.log('Data source inicializado.');
+});
 
 app.listen(3333, () => {
   console.log('Servidor iniciado na porta 3333!');

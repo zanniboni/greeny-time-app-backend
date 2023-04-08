@@ -1,8 +1,6 @@
 import AppError from '@shared/http/errors/AppError';
 import User from '../entities/User';
-import { getCustomRepository } from 'typeorm';
 import { UserRepository } from '../repositories/User.Repository';
-import { AppDataSource } from 'src/data-source';
 
 interface IRequest {
   id: string;
@@ -13,9 +11,7 @@ interface IRequest {
 
 class UpdateUserService {
   public async execute({ id, name, email, password }: IRequest): Promise<User> {
-    const usersRepository = AppDataSource.getRepository(UserRepository);
-
-    const user = await usersRepository.findOne(id);
+    const user = await UserRepository.findById(id);
 
     if (!user) {
       throw new AppError(`User not found with id ${id}`);
@@ -31,7 +27,7 @@ class UpdateUserService {
 
     user.password = password;
 
-    await usersRepository.save(user);
+    await UserRepository.save(user);
 
     return user;
   }

@@ -1,4 +1,3 @@
-import { getCustomRepository } from 'typeorm';
 import { UserRepository } from '../repositories/User.Repository';
 import AppError from '../../../shared/http/errors/AppError';
 
@@ -8,15 +7,13 @@ interface IRequest {
 
 class DeleteUserService {
   public async execute({ id }: IRequest) {
-    const usersRepository = getCustomRepository(UserRepository);
-
-    const user = await usersRepository.findOne(id);
+    const user = await UserRepository.findById(id);
 
     if (!user) {
       throw new AppError(`User not found with id: ${id}`);
     }
 
-    await usersRepository.remove(user);
+    await UserRepository.remove(user);
   }
 }
 

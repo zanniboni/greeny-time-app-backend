@@ -1,32 +1,20 @@
-import { Repository } from 'typeorm';
-
+import { AppDataSource } from 'src/data-source';
 import User from '../entities/User';
 
-export class UserRepository extends Repository<User> {
-  public async findByName(name: string): Promise<User | null> {
-    const user = this.findOne({
-      where: {
-        name,
-      },
-    });
-    return user;
-  }
-
-  public async findById(id: string): Promise<User | null> {
-    const user = this.findOne({
-      where: {
-        id,
-      },
-    });
-    return user;
-  }
-
-  public async findByEmail(email: string): Promise<User | null> {
-    const user = this.findOne({
-      where: {
-        email,
-      },
-    });
-    return user;
-  }
-}
+export const UserRepository = AppDataSource.getRepository(User).extend({
+  findByName(name: string) {
+    return this.createQueryBuilder('user')
+      .where('user.name = :name', { name })
+      .getMany();
+  },
+  findByEmail(email: string) {
+    return this.createQueryBuilder('user')
+      .where('user.email = :email', { email })
+      .getOne();
+  },
+  findById(id: string) {
+    return this.createQueryBuilder('user')
+      .where('user.id = :id', { id })
+      .getOne();
+  },
+});
