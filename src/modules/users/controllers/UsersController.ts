@@ -3,6 +3,7 @@ import ListUserService from '../services/ListUserService';
 import CreateUserService from '../services/CreateUserService';
 import UpdateUserService from '../services/UpdateUserService';
 import DeleteUserService from '../services/DeleteUserService';
+import FindUserService from '../services/FindUserService';
 
 export default class UserController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -41,5 +42,15 @@ export default class UserController {
     await deleteUser.execute({ id });
 
     return response.json([]);
+  }
+
+  public async find(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const findUser = new FindUserService();
+
+    const user = await findUser.execute({ id });
+
+    return response.json(user);
   }
 }
