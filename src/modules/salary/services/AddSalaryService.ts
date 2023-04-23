@@ -20,6 +20,7 @@ class AddSalaryService {
     if (!user) {
       throw new AppError(`There is no user with id ${userId}`);
     }
+
     const salary = SalaryRepository.create({
       value,
       payment_date,
