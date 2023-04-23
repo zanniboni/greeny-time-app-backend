@@ -5,7 +5,8 @@ import DeleteSalaryService from '../services/DeleteSalaryService';
 
 export default class SalaryController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { userId, value, payment_date } = request.body;
+    const { value, payment_date } = request.body;
+    const userId = request.user.id;
 
     const addSalaryService = new AddSalaryService();
 
