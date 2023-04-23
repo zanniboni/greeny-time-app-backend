@@ -1,24 +1,26 @@
+import User from '../../users/entities/User';
 import {
-  CreateDateColumn,
-  UpdateDateColumn,
-  Entity,
   Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('users')
-class User {
+@Entity('salary')
+class Salary {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
-  name: string;
+  value: number;
 
   @Column()
-  email: string;
+  payment_date: Date;
 
-  @Column()
-  password: string;
+  @ManyToOne(() => User, user => user)
+  user: User;
 
   @CreateDateColumn()
   created_at: Date;
@@ -27,4 +29,4 @@ class User {
   updated_at: Date;
 }
 
-export default User;
+export default Salary;
