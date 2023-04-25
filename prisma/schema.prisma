@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model category {
+  id          String   @id(map: "PK_9c4e4a89e3674fc9f382d733f03") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String   @db.VarChar
+  description String   @db.VarChar
+  created_at  DateTime @default(now()) @db.Timestamp(6)
+  updated_at  DateTime @default(now()) @db.Timestamp(6)
+}
+
+model salary {
+  value        Int
+  payment_date DateTime @db.Timestamp(6)
+  created_at   DateTime @default(now()) @db.Timestamp(6)
+  updated_at   DateTime @default(now()) @db.Timestamp(6)
+  userId       String?  @db.Uuid
+  id           String   @id(map: "PK_3ac75d9585433a6264e618a6503") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  users        users?   @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_214bcd0a429256834f9e9cba42f")
+}
+
+model user_tokens {
+  id         Int      @id(map: "PK_63764db9d9aaa4af33e07b2f4bf") @default(autoincrement())
+  token      String   @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id    String   @db.VarChar
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  updated_at DateTime @default(now()) @db.Timestamp(6)
+}
+
+model users {
+  name       String   @db.VarChar
+  email      String   @db.VarChar
+  password   String   @db.VarChar
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  updated_at DateTime @default(now()) @db.Timestamp(6)
+  id         String   @id(map: "PK_a3ffb1c0c8416b9fc6f907b7433") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  salary     salary[]
+}
