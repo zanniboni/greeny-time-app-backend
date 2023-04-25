@@ -8,14 +8,14 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@config/*": [
-        "src/config/*"
+      "@Adapter/*": [
+        "src/Adapter/*"
       ],
-      "@modules/*": [
-        "src/modules/*"
+      "@Application/*": [
+        "src/Application/*"
       ],
-      "@shared/*": [
-        "src/shared/*"
+      "@Infrastructure/*": [
+        "src/Infrastructure/*"
       ]
     },
     "typeRoots": [
