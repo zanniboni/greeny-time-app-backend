@@ -3,9 +3,8 @@ import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
 import { errors } from 'celebrate';
-import routes from './Infrastructure/Routes';
-import AppError from '@Infrastructure/Middlewares/Errors/AppError';
-import { AppDataSource } from './data-source';
+import routes from './Infrastructure/Routes/Routes';
+import AppError from './Domain/Middlewares/Errors/AppError';
 
 const app = express();
 
@@ -31,10 +30,6 @@ app.use(
     });
   },
 );
-
-AppDataSource.initialize().then(() => {
-  console.log('Data source inicializado.');
-});
 
 app.listen(3333, () => {
   console.log('Servidor iniciado na porta 3333!');
