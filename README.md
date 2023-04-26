@@ -3,6 +3,7 @@
 O GreenyTime é um aplicativo que tem como objetivo auxiliar no controle financeiro pessoal de forma simples e intuitiva. Com o GreenyTime, é possível adicionar suas receitas e despesas de forma organizada e visualizar suas finanças de maneira clara.
 
 # Pré requisitos
+
 - Node.js v14 ou superior
 - Docker Desktop
 - DBeaver (use o que preferir)
@@ -16,12 +17,15 @@ docker run --name {nome do container} -e POSTGRES_PASSWORD={password do banco} -
 # Execute as migrations
 
 1.
+
 ```
-npm run migration:generate
+npm run prisma:generate
 ```
+
 2.
+
 ```
-npm run migration:run
+npm run prisma:format
 ```
 
 # Executar

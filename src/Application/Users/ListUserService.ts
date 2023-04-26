@@ -1,6 +1,6 @@
-import { IListUserService } from '@Adapter/Controllers/Users/IListUserService';
 import { UserRepository } from 'src/Domain/Users/UserRepository';
 import { users } from '@prisma/client/index';
+import { IListUserService } from './IListUserService';
 
 class ListUserService implements IListUserService {
   private userRepository = new UserRepository();

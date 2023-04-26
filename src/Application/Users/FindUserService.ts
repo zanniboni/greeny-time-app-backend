@@ -1,8 +1,8 @@
 import { FindUserRequest } from '@Adapter/Controllers/Users/FindUserRequest';
-import { IFindUserService } from '@Adapter/Controllers/Users/IFindUserService';
 import { UserRepository } from 'src/Domain/Users/UserRepository';
 import AppError from 'src/Domain/Middlewares/Errors/AppError';
 import { users } from '@prisma/client/index';
+import { IFindUserService } from './IFindUserService';
 class FindUserService implements IFindUserService {
   private userRepository = new UserRepository();
 

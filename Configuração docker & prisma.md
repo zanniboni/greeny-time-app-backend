@@ -6,8 +6,8 @@ docker run --name greenytime_postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -
 
 ### Para gerar a migration use
 
-npm run migration:generate
+npm run prisma:generate
 
-### Para execcutar a migration use
+### Para formatar o arquivo do primsa use
 
-npm run migration:run
+npm run prisma:format
