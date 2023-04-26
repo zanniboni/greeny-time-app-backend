@@ -1,12 +1,13 @@
-import AppError from 'src/Infrastructure/Middlewares/Errors/AppError';
-import { FindUserRequest } from 'src/Adapter/Users/FindUserRequest';
-import { IFindUserService } from 'src/Adapter/Users/IFindUserService';
-import { UserRepository } from 'src/Domain/Users/Repositories/UserRepository';
-import User from 'src/Domain/Users/User';
-
+import { FindUserRequest } from '@Adapter/Controllers/Users/FindUserRequest';
+import { UserRepository } from 'src/Domain/Users/UserRepository';
+import AppError from 'src/Domain/Middlewares/Errors/AppError';
+import { users } from '@prisma/client/index';
+import { IFindUserService } from './IFindUserService';
 class FindUserService implements IFindUserService {
-  public async execute({ id }: FindUserRequest): Promise<User> {
-    const user = await UserRepository.findById(id);
+  private userRepository = new UserRepository();
+
+  public async execute({ id }: FindUserRequest): Promise<users> {
+    const user = await this.userRepository.findById(id);
 
     if (!user) {
       throw new AppError(`User not found with id: ${id}`);

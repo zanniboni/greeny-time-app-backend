@@ -1,10 +1,12 @@
-import { IListUserService } from 'src/Adapter/Users/IListUserService';
-import { UserRepository } from 'src/Domain/Users/Repositories/UserRepository';
-import User from 'src/Domain/Users/User';
+import { UserRepository } from 'src/Domain/Users/UserRepository';
+import { users } from '@prisma/client/index';
+import { IListUserService } from './IListUserService';
 
 class ListUserService implements IListUserService {
-  public async execute(): Promise<User[]> {
-    const users = UserRepository.find();
+  private userRepository = new UserRepository();
+
+  public async execute(): Promise<users[]> {
+    const users = await this.userRepository.find();
 
     return users;
   }

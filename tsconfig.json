@@ -11,6 +11,9 @@
       "@Adapter/*": [
         "src/Adapter/*"
       ],
+      "@Domain/*": [
+        "src/Domain/*"
+      ],
       "@Application/*": [
         "src/Application/*"
       ],

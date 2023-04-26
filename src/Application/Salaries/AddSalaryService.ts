@@ -1,29 +1,30 @@
-import { UserRepository } from 'src/Domain/Users/Repositories/UserRepository';
-import Salary from '../../Domain/Salaries/Salary';
-import { SalaryRepository } from '../../Domain/Salaries/Repositories/SalaryRepository';
-import AppError from 'src/Infrastructure/Middlewares/Errors/AppError';
-import { AddSalaryRequest } from 'src/Adapter/Salaries/AddSalaryRequest';
-import { IAddSalaryService } from 'src/Adapter/Salaries/IAddSalaryService';
+import { UserRepository } from 'src/Domain/Users/UserRepository';
+import { SalaryRepository } from '../../Domain/Salaries/SalaryRepository';
+import { AddSalaryRequest } from '@Adapter/Controllers/Salaries/AddSalaryRequest';
+import { IAddSalaryService } from '@Adapter/Controllers/Salaries/IAddSalaryService';
+import AppError from 'src/Domain/Middlewares/Errors/AppError';
+import { salary } from '@prisma/client/index';
 
 class AddSalaryService implements IAddSalaryService {
+  private usersRepository = new UserRepository();
+  private salaryRepository = new SalaryRepository();
+
   public async execute({
     userId,
     value,
     payment_date,
-  }: AddSalaryRequest): Promise<Salary> {
-    const user = await UserRepository.findById(userId);
+  }: AddSalaryRequest): Promise<salary> {
+    const user = await this.usersRepository.findById(userId);
 
     if (!user) {
       throw new AppError(`There is no user with id ${userId}`);
     }
 
-    const salary = SalaryRepository.create({
+    const salary = await this.salaryRepository.create({
       value,
       payment_date,
-      user,
+      userId: user.id,
     });
-
-    await SalaryRepository.save(salary);
 
     return salary;
   }

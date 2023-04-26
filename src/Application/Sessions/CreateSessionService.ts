@@ -1,18 +1,20 @@
-import AppError from 'src/Infrastructure/Middlewares/Errors/AppError';
-import { UserRepository } from '../../Domain/Users/Repositories/UserRepository';
+import { UserRepository } from '../../Domain/Users/UserRepository';
 import { sign } from 'jsonwebtoken';
-import authConfig from '@config/Auth';
+import authConfig from '@Domain/Middlewares/Config/Auth';
 import { compare } from 'bcrypt';
-import { CreateSessionRequest } from 'src/Adapter/Sessions/CreateSessionRequest';
-import { CreateSessionResponse } from 'src/Adapter/Sessions/CreateSessionResponse';
-import { ICreateSessionService } from 'src/Adapter/Sessions/ICreateSessionService';
+import { CreateSessionRequest } from '@Adapter/Controllers/Sessions/CreateSessionRequest';
+import { CreateSessionResponse } from '@Adapter/Controllers/Sessions/CreateSessionResponse';
+import { ICreateSessionService } from '@Application/Sessions/ICreateSessionService';
+import AppError from 'src/Domain/Middlewares/Errors/AppError';
 
 export default class CreateSessionService implements ICreateSessionService {
+  private usersRepository = new UserRepository();
+
   public async execute({
     email,
     password,
   }: CreateSessionRequest): Promise<CreateSessionResponse> {
-    const user = await UserRepository.findByEmail(email);
+    const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
       throw new AppError('Incorrect e-mail/password combination', 401);
