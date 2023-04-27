@@ -12,6 +12,9 @@
     "prisma:deploy": "npx prisma migrate deploy",
     "build": "tsup src/"
   },
+    "engines": {
+    "node": ">=16.9"
+  },
   "license": "MIT",
   "dependencies": {
     "@prisma/client": "^4.13.0",

@@ -1,9 +1,9 @@
 import { UserRepository } from 'src/Domain/Users/UserRepository';
 import { SalaryRepository } from '../../Domain/Salaries/SalaryRepository';
 import { AddSalaryRequest } from '@Adapter/Controllers/Salaries/AddSalaryRequest';
-import { IAddSalaryService } from '@Adapter/Controllers/Salaries/IAddSalaryService';
 import AppError from 'src/Domain/Middlewares/Errors/AppError';
 import { salary } from '@prisma/client/index';
+import { IAddSalaryService } from './IAddSalaryService';
 
 class AddSalaryService implements IAddSalaryService {
   private usersRepository = new UserRepository();
