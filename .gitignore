@@ -102,3 +102,6 @@ typings/
 
 uploads/\*
 !uploads/.gitkeep
+
+# Build
+dist/*
