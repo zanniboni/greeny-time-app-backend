@@ -4,6 +4,10 @@ import { PrismaClient } from '@prisma/client';
 export class CategoryRepository {
   private prisma = new PrismaClient();
 
+  async list() {
+    return this.prisma.category.findMany();
+  }
+
   async findById(id: string) {
     return this.prisma.category.findFirst({
       where: {
