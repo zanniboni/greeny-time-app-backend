@@ -5,11 +5,11 @@ import { IBaseController } from 'src/Adapter/Controllers/IBaseController';
 
 export default class CategoryController implements IBaseController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { name, description } = request.body;
+    const { name, icon, color } = request.body;
 
     const createCategory = new CreateCategoryService();
 
-    const category = await createCategory.execute({ name, description });
+    const category = await createCategory.execute({ name, icon, color });
 
     return response.json(category);
   }

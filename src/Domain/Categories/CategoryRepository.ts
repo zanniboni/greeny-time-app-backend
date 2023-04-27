@@ -20,11 +20,12 @@ export class CategoryRepository {
     });
   }
 
-  async create({ name, description }: CreateCategoryRequest) {
+  async create({ name, icon, color }: CreateCategoryRequest) {
     return this.prisma.category.create({
       data: {
         name,
-        description,
+        icon,
+        color,
       },
     });
   }

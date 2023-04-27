@@ -5,21 +5,23 @@ import AppError from 'src/Domain/Middlewares/Errors/AppError';
 import { category } from '@prisma/client/index';
 
 export class CreateCategoryService implements ICreateCategoryService {
-  private categoryRepostory = new CategoryRepository();
+  private categoryRepository = new CategoryRepository();
 
   public async execute({
     name,
-    description,
+    icon,
+    color,
   }: CreateCategoryRequest): Promise<category> {
-    const categoryNameExists = await this.categoryRepostory.findByName(name);
+    const categoryNameExists = await this.categoryRepository.findByName(name);
 
     if (categoryNameExists) {
       throw new AppError(`There is already one category with name ${name}`);
     }
 
-    const category = await this.categoryRepostory.create({
+    const category = await this.categoryRepository.create({
       name,
-      description,
+      icon,
+      color,
     });
 
     return category;
