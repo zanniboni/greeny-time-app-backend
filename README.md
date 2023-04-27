@@ -4,9 +4,16 @@ O GreenyTime é um aplicativo que tem como objetivo auxiliar no controle finance
 
 # Pré requisitos
 
-- Node.js v14 ou superior
+- Node.js v16 ou superior
 - Docker Desktop
 - DBeaver (use o que preferir)
+
+# Postman
+
+A collection mais atual está disponível em
+```
+postman/*
+```
 
 # Iniciando com o docker
 
@@ -16,18 +23,21 @@ docker run --name {nome do container} -e POSTGRES_PASSWORD={password do banco} -
 
 # Execute as migrations
 
-1.
+1. Gere as migrations em dev
 
 ```
 npm run prisma:generate
 ```
 
-2.
+2. Formate o prisma.schema
 
 ```
 npm run prisma:format
 ```
-
+3. Deploy
+```
+npm run prisma:build
+```
 # Executar
 
 Para rodar o app, use
