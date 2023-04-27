@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "lib": [
+      "es5",
+      "es6",
+      "ES2018"
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@Adapter/*": [
+        "src/Adapter/*"
+      ],
+      "@Domain/*": [
+        "src/Domain/*"
+      ],
+      "@Application/*": [
+        "src/Application/*"
+      ],
+      "@Infrastructure/*": [
+        "src/Infrastructure/*"
+      ]
+    },
+    "typeRoots": [
+      "@types",
+      "./node_modules/@types"
+    ],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": false
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "ts-node": {
+    "files": true
+  }
+}
