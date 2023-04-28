@@ -6,7 +6,7 @@ const categoryRouter = Router();
 const categoryController = new CategoryController();
 
 categoryRouter.get('/', isAuthenticated, categoryController.list);
-
 categoryRouter.post('/', isAuthenticated, categoryController.create);
+categoryRouter.get('/:id', isAuthenticated, categoryController.find);
 
 export default categoryRouter;
