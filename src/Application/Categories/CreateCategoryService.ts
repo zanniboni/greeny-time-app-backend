@@ -4,7 +4,7 @@ import { CreateCategoryRequest } from '@Adapter/Controllers/Categories/CreateCat
 import AppError from 'src/Domain/Middlewares/Errors/AppError';
 import { category } from '@prisma/client/index';
 
-export class CreateCategoryService implements ICreateCategoryService {
+class CreateCategoryService implements ICreateCategoryService {
   private categoryRepository = new CategoryRepository();
 
   public async execute({
@@ -27,3 +27,5 @@ export class CreateCategoryService implements ICreateCategoryService {
     return category;
   }
 }
+
+export default CreateCategoryService;
