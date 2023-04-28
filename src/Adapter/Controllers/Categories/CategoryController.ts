@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Request, Response } from 'express';
-import { CreateCategoryService } from '../../../Application/Categories/CreateCategoryService';
-import { ListCategoryService } from '@Application/Categories/ListCategoryService';
+import CreateCategoryService from '@Application/Categories/CreateCategoryService';
+import ListCategoryService from '@Application/Categories/ListCategoryService';
+import FindCategoryService from '@Application/Categories/FindCategoryService';
 import { IBaseController } from 'src/Adapter/Controllers/IBaseController';
 
 export default class CategoryController implements IBaseController {
@@ -31,7 +32,13 @@ export default class CategoryController implements IBaseController {
     throw new Error('Method not implemented.');
   }
 
-  find(request: Request, response: Response): Promise<Response> {
-    throw new Error('Method not implemented.');
+  public async find(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const findCategoryService = new FindCategoryService();
+
+    const category = await findCategoryService.execute({ id });
+
+    return response.json(category);
   }
 }
