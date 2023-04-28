@@ -4,6 +4,10 @@ import { PrismaClient } from '@prisma/client';
 export class CategoryRepository {
   private prisma = new PrismaClient();
 
+  async list() {
+    return this.prisma.category.findMany();
+  }
+
   async findById(id: string) {
     return this.prisma.category.findFirst({
       where: {
@@ -20,11 +24,12 @@ export class CategoryRepository {
     });
   }
 
-  async create({ name, description }: CreateCategoryRequest) {
+  async create({ name, icon, color }: CreateCategoryRequest) {
     return this.prisma.category.create({
       data: {
         name,
-        description,
+        icon,
+        color,
       },
     });
   }
