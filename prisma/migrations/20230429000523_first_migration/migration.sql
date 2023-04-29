@@ -86,10 +86,132 @@ ALTER TABLE "expenses" ADD CONSTRAINT "expenses_categoryId_fkey" FOREIGN KEY ("c
 
 -- Insert Default Categories
 INSERT INTO "category"
-VALUES
   (
-    "Viagem", "true"
-),
-  ( -- second row: values for the columns in the list above
-    "Educação", "true"
-)
+  name,
+  icon,
+  color,
+  permanent)
+VALUES
+  ('Viagem', 'null', 'null', 'true');
+INSERT INTO "category"
+  (
+  name,
+  icon,
+  color,
+  permanent)
+VALUES
+  ('Educação', 'null', 'null', 'true');
+INSERT INTO "category"
+  (
+  name,
+  icon,
+  color,
+  permanent)
+VALUES
+  ('Transporte', 'null', 'null', 'true');
+INSERT INTO "category"
+  (
+  name,
+  icon,
+  color,
+  permanent)
+VALUES
+  ('Streams', 'null', 'null', 'true');
+INSERT INTO "category"
+  (
+  name,
+  icon,
+  color,
+  permanent)
+VALUES
+  ('Comidas & Bebidas', 'null', 'null', 'true');
+INSERT INTO "category"
+  (
+  name,
+  icon,
+  color,
+  permanent)
+VALUES
+  ('Tecnologia', 'null', 'null', 'true');
+INSERT INTO "category"
+  (
+  name,
+  icon,
+  color,
+  permanent)
+VALUES
+  ('Esportes', 'null', 'null', 'true');
+INSERT INTO "category"
+  (
+  name,
+  icon,
+  color,
+  permanent)
+VALUES
+  ('Música', 'null', 'null', 'true');
+INSERT INTO "category"
+  (
+  name,
+  icon,
+  color,
+  permanent)
+VALUES
+  ('Entretenimento', 'null', 'null', 'true');
+INSERT INTO "category"
+  (
+  name,
+  icon,
+  color,
+  permanent)
+VALUES
+  ('Finanças', 'null', 'null', 'true');
+INSERT INTO "category"
+  (
+  name,
+  icon,
+  color,
+  permanent)
+VALUES
+  ('Moda', 'null', 'null', 'true');
+INSERT INTO "category"
+  (
+  name,
+  icon,
+  color,
+  permanent)
+VALUES
+  ('Arte', 'null', 'null', 'true');
+INSERT INTO "category"
+  (
+  name,
+  icon,
+  color,
+  permanent)
+VALUES
+  ('Cinema', 'null', 'null', 'true');
+INSERT INTO "category"
+  (
+  name,
+  icon,
+  color,
+  permanent)
+VALUES
+  ('Negócios', 'null', 'null', 'true');
+
+-- Insert Default Roles
+INSERT INTO "role"
+  (name)
+VALUES
+  ('USER');
+INSERT INTO "role"
+  (name)
+VALUES
+  ('PLUS');
+INSERT INTO "role"
+  (name)
+VALUES
+  ('PREMIUM');
+INSERT INTO "role"
+  (name)
+VALUES
+  ('ADMIN');

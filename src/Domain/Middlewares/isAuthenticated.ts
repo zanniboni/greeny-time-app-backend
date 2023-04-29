@@ -23,6 +23,7 @@ export default function isAuthenticated(
 
     request.user = {
       id: sub,
+      role: authConfig.jwt.role,
     };
 
     return next();
