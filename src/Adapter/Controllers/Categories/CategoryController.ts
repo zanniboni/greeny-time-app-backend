@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Request, Response } from 'express';
+import { IBaseController } from 'src/Adapter/Controllers/IBaseController';
 import CreateCategoryService from '@Application/Categories/CreateCategoryService';
 import ListCategoryService from '@Application/Categories/ListCategoryService';
+import DeleteCategoryService from '@Application/Categories/DeleteCategoryService';
 import FindCategoryService from '@Application/Categories/FindCategoryService';
-import { IBaseController } from 'src/Adapter/Controllers/IBaseController';
 
 export default class CategoryController implements IBaseController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -17,9 +18,9 @@ export default class CategoryController implements IBaseController {
   }
 
   public async list(request: Request, response: Response): Promise<Response> {
-    const listCategoryService = new ListCategoryService();
+    const listCategory = new ListCategoryService();
 
-    const categories = await listCategoryService.execute();
+    const categories = await listCategory.execute();
 
     return response.json(categories);
   }
@@ -28,16 +29,22 @@ export default class CategoryController implements IBaseController {
     throw new Error('Method not implemented.');
   }
 
-  delete(request: Request, response: Response): Promise<Response> {
-    throw new Error('Method not implemented.');
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const deleteCategory = new DeleteCategoryService();
+
+    await deleteCategory.execute({ id });
+
+    return response.json([]);
   }
 
   public async find(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
-    const findCategoryService = new FindCategoryService();
+    const findCategory = new FindCategoryService();
 
-    const category = await findCategoryService.execute({ id });
+    const category = await findCategory.execute({ id });
 
     return response.json(category);
   }
