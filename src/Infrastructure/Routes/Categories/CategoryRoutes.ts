@@ -3,6 +3,7 @@ import CategoryController from '../../../Adapter/Controllers/Categories/Category
 import isAuthenticated from 'src/Domain/Middlewares/isAuthenticated';
 import { Segments, celebrate } from 'celebrate';
 import Joi from 'joi';
+import CheckUserRole from '@Domain/Middlewares/CheckUserRole';
 
 const categoryRouter = Router();
 const categoryController = new CategoryController();
@@ -15,6 +16,7 @@ categoryRouter.get(
     },
   }),
   isAuthenticated,
+  CheckUserRole,
   categoryController.list,
 );
 

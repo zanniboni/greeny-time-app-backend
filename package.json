@@ -7,12 +7,13 @@
     "start": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/server.ts",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
-    "prisma:generate": "npx prisma migrate dev",
+    "prisma:generate": "npx prisma migrate dev --create-only",
+    "prisma:migrate": "npx prisma migrate dev",
     "prisma:format": "npx prisma format",
     "prisma:deploy": "npx prisma migrate deploy",
     "build": "tsup src/"
   },
-    "engines": {
+  "engines": {
     "node": ">=16.9"
   },
   "license": "MIT",

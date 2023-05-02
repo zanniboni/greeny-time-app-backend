@@ -11,6 +11,7 @@ O GreenyTime é um aplicativo que tem como objetivo auxiliar no controle finance
 # Postman
 
 A collection mais atual está disponível em
+
 ```
 postman/*
 ```
@@ -29,15 +30,24 @@ docker run --name {nome do container} -e POSTGRES_PASSWORD={password do banco} -
 npm run prisma:generate
 ```
 
-2. Formate o prisma.schema
+2. Execute as migrations em dev
+
+```
+npm run prisma:migrate
+```
+
+3. Formate o prisma.schema
 
 ```
 npm run prisma:format
 ```
-3. Deploy
+
+4. Deploy
+
 ```
 npm run prisma:build
 ```
+
 # Executar
 
 Para rodar o app, use
