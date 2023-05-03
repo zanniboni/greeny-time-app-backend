@@ -1,5 +1,6 @@
 import { CreateCategoryRequest } from '@Adapter/Controllers/Categories/CreateCategoryRequest';
-import { PrismaClient, category } from '@prisma/client';
+import { UpdateCategoryRequest } from '@Adapter/Controllers/Categories/UpdateCategoryRequest';
+import { PrismaClient } from '@prisma/client';
 
 export class CategoryRepository {
   private prisma = new PrismaClient();
@@ -42,7 +43,7 @@ export class CategoryRepository {
     });
   }
 
-  async update(category: category) {
+  async update(category: UpdateCategoryRequest) {
     return this.prisma.category.update({
       where: {
         id: category.id,
