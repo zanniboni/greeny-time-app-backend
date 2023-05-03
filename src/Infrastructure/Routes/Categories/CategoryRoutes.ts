@@ -53,8 +53,8 @@ categoryRouter.put(
 
     [Segments.BODY]: {
       name: Joi.string().required(),
-      icon: Joi.string().required(),
-      color: Joi.string().required(),
+      icon: Joi.string().optional(),
+      color: Joi.string().optional(),
     },
   }),
   isAuthenticated,
