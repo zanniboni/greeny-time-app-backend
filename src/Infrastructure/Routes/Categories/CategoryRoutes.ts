@@ -37,11 +37,22 @@ categoryRouter.get(
   '/:id',
   celebrate({
     [Segments.PARAMS]: {
-      id: Joi.string().uuid().required,
+      id: Joi.string().uuid().required(),
     },
   }),
   isAuthenticated,
   categoryController.find,
+);
+
+categoryRouter.delete(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+  }),
+  isAuthenticated,
+  categoryController.delete,
 );
 
 export default categoryRouter;
