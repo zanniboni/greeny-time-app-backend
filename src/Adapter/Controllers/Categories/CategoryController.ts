@@ -5,6 +5,7 @@ import CreateCategoryService from '@Application/Categories/CreateCategoryService
 import ListCategoryService from '@Application/Categories/ListCategoryService';
 import DeleteCategoryService from '@Application/Categories/DeleteCategoryService';
 import FindCategoryService from '@Application/Categories/FindCategoryService';
+import UpdateCategoryService from '@Application/Categories/UpdateCategoryService';
 
 export default class CategoryController implements IBaseController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -25,8 +26,15 @@ export default class CategoryController implements IBaseController {
     return response.json(categories);
   }
 
-  update(request: Request, response: Response): Promise<Response> {
-    throw new Error('Method not implemented.');
+  public async update(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+    const { name, icon, color } = request.body;
+
+    const updateCategory = new UpdateCategoryService();
+
+    const category = await updateCategory.execute({ id, name, icon, color });
+
+    return response.json(category);
   }
 
   public async delete(request: Request, response: Response): Promise<Response> {

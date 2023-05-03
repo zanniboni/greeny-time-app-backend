@@ -44,6 +44,23 @@ categoryRouter.get(
   categoryController.find,
 );
 
+categoryRouter.put(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      icon: Joi.string().required(),
+      color: Joi.string().required(),
+    },
+  }),
+  isAuthenticated,
+  categoryController.update,
+);
+
 categoryRouter.delete(
   '/:id',
   celebrate({
