@@ -30,8 +30,8 @@ class UpdateCategoryService implements IUpdateCategoryService {
     }
 
     category.name = name;
-    category.icon = icon;
-    category.color = color;
+    category.icon = icon ? icon : null;
+    category.color = color ? color : null;
 
     await this.categoryRepository.update(category);
 
