@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "b42add3c-db16-4ce3-9236-b151175a49dd",
+		"_postman_id": "7b271b02-07f2-4bb9-89c9-eadd88a478e3",
 		"name": "GreenyTime",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "15087274"
+		"_exporter_id": "23523136"
 	},
 	"item": [
 		{
@@ -193,7 +193,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"johndoe@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"raw": "{\r\n    \"email\": \"viny.zanchagas@gmail.com\",\r\n    \"password\": \"viny99\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -330,7 +330,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Viagens\",\r\n    \"description\": \"Use esse categoria para separar os gastos relacionadas a viagens.\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Teste2\",\r\n    \"icon\": \"null\",\r\n    \"color\": \"null\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -344,6 +344,126 @@
 							],
 							"path": [
 								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"UpdateName\",\n    \"icon\": \"UpdateIcon\",\n    \"color\": \"UpdateColor\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/category/21a2b028-1ee4-4502-beb0-69751efa5e62",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"category",
+								"21a2b028-1ee4-4502-beb0-69751efa5e62"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/category",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find category by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/category/2e954e01-0304-4cef-b0e1-cfd9eaeb7722",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"category",
+								"2e954e01-0304-4cef-b0e1-cfd9eaeb7722"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/category/672767b6-dab3-4225-9d88-751d64fefc56",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"category",
+								"672767b6-dab3-4225-9d88-751d64fefc56"
 							]
 						}
 					},
