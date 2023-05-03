@@ -3,6 +3,7 @@ import usersRouter from './Users/UserRoutes';
 import { Request, Response, Router } from 'express';
 import salaryRouter from 'src/Infrastructure/Routes/Salaries/SalaryRoutes';
 import categoryRouter from 'src/Infrastructure/Routes/Categories/CategoryRoutes';
+import promptRouter from './ChatGpt/ChatGptRoutes';
 
 const routes = Router();
 
@@ -10,6 +11,7 @@ routes.use('/users', usersRouter);
 routes.use('/session', sessionRouter);
 routes.use('/salary', salaryRouter);
 routes.use('/category', categoryRouter);
+routes.use('/prompts', promptRouter);
 routes.use('/healthcheck', (req: Request, res: Response) => {
   res.sendStatus(200);
 });
