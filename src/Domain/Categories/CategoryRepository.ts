@@ -1,4 +1,5 @@
 import { CreateCategoryRequest } from '@Adapter/Controllers/Categories/CreateCategoryRequest';
+import { UpdateCategoryRequest } from '@Adapter/Controllers/Categories/UpdateCategoryRequest';
 import { PrismaClient } from '@prisma/client';
 
 export class CategoryRepository {
@@ -30,6 +31,27 @@ export class CategoryRepository {
         name,
         icon,
         color,
+      },
+    });
+  }
+
+  async remove(id: string) {
+    return this.prisma.category.delete({
+      where: {
+        id,
+      },
+    });
+  }
+
+  async update(category: UpdateCategoryRequest) {
+    return this.prisma.category.update({
+      where: {
+        id: category.id,
+      },
+      data: {
+        name: category.name,
+        icon: category.icon,
+        color: category.color,
       },
     });
   }
